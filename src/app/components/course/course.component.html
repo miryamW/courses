@@ -1,0 +1,21 @@
+<div  [ngClass]="isEven?'even':''">
+<a [routerLink]="link">
+  <p [ngClass]="'title'"> name: {{courseData!.courseName}}</p>
+</a>
+  <p [ngStyle]="{color:courseData!.numHours<30?'green':courseData!.numHours>60?'red':'orange'}">number of hours:
+    {{courseData!.numHours}}
+  </p>
+  <div [ngSwitch]="courseData!.type">
+    <div *ngSwitchCase="0">teacher name: {{courseData!.teacher}}</div>
+    <div *ngSwitchCase="1">teacher name: {{courseData!.teacher}}
+      <p>needed softwares:</p>
+      <li *ngFor="let s of courseData?.softwares">{{s}}</li>
+    </div>
+    <div *ngSwitchCase="2">
+      <p>needed softwares:</p>
+      <li *ngFor="let s of courseData?.softwares">{{s}}</li>
+    </div>
+  </div>
+  <button (click)="btnjoin()" *ngIf="!join&&dateOfStart!>d">join</button>
+  <button *ngIf="join" (click)="btndisjoin()">cancel join</button>
+</div>

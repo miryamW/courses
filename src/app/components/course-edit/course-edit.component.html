@@ -1,0 +1,30 @@
+<form *ngIf="!isSaved" [formGroup]="form!">
+  <div>
+    <label>course name</label>
+    <input type="text" [ngClass]="exceptions[0]?'exceptions':''" formControlName="courseName" [(ngModel)]="courseData!.courseName">
+  </div>
+  <div>
+    <label>course type</label>
+    <select formControlName="type" [ngClass]="exceptions[1]?'exceptions':''" [(ngModel)]="courseData!.type ">
+      <option>choose type:</option>
+      <option  *ngFor="let t of types let i=index" [ngValue]="i">{{t}}</option>
+  </select>
+  </div>
+  <div>
+    <label>number of hours</label>
+    <input type="number" formControlName="numHours" [ngClass]="exceptions[2]?'exceptions':''" [(ngModel)]="courseData!.numHours">
+  </div>
+  <div>
+    <label>date of start:</label>
+    <input type="date" formControlName="dateOfStart" [ngClass]="exceptions[3]?'exceptions':''" [(ngModel)]="courseData!.dateOfStart">
+  </div>
+  <div>
+    <label>teacher</label>
+    <input type="text" [ngClass]="exceptions[4]?'exceptions':''" formControlName="teacher" [(ngModel)]="courseData!.teacher">
+  </div>
+  <div>
+    <label>needed softwares:</label>
+    <input type="text" [ngClass]="exceptions[5]?'exceptions':''" formControlName="softwares" [(ngModel)]="courseData!.softwares[0]">
+  </div>
+ <button (click)="save()">Save</button>
+</form>

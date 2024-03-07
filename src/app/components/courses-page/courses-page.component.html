@@ -1,0 +1,14 @@
+<input type="text" placeholder="search by name" (blur)="getByName()" [(ngModel)]="nameForSearch" />
+<router-outlet></router-outlet>
+<app-course *ngIf="searchedCourse" [isEven]=false [courseData]="searchedCourse" (listRemove)="cancelCourse($event)"
+  (listAdd)="joinCourse($event)"></app-course>
+<button *ngIf="searchedCourse" (click)="hideSearched()">hide searched</button>
+<div *ngFor="let c of coursesToView let i = index  let e = even">
+  <app-course [isEven]=e [courseData]=c (listRemove)="cancelCourse($event)" (listAdd)="joinCourse($event)"></app-course>
+</div>
+<p>courses you joined:</p>
+<div *ngFor="let c of myCourses">
+  <li>{{c}}</li>
+</div>
+<button (click)="cancelAll()">cancel all</button>
+<app-course-add (saved)="addCourse($event)"></app-course-add>

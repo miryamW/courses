@@ -1,0 +1,14 @@
+<form ngForm>
+  <div>
+      <label>user name</label>
+      <input type="text"  [(ngModel)]="userData.userName" name="username" required>
+  </div>
+  <div>
+      <label>password</label>
+      <input type="password" [(ngModel)]="userData.password" name="password" required>
+  </div>
+  <button type="submit" (click)="loginClick()">Login</button>
+  <h4 [ngStyle]="{color:'red'}" *ngIf="!isUserName">Type user name</h4>
+  <h4 [ngStyle]="{color:'red'}" *ngIf="!isPassword">Type password</h4>
+
+</form>
